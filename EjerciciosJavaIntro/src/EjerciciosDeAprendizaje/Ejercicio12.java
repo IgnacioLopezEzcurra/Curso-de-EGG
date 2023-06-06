@@ -20,15 +20,43 @@ public class Ejercicio12 {
 
         Scanner leer = new Scanner(System.in);
         
+        System.out.println("Bienvenido al simulador del dispositivo RS232"
+                + "Las cadenas a ingresar deben tener un formato \n" +
+"fijo: tienen que ser de un máximo de 5 caracteres de largo, el primer carácter tiene que \n" +
+"ser X y el último tiene que ser una O. ");
+        
+        System.out.println("");
+        
+        System.out.println("Las secuencias leídas que respeten el formato se consideran correctas, la secuencia \n" +
+"especial “&&&&&” marca el final de los envíos (llamémosla FDE), y toda secuencia \n" +
+"distinta de FDE, que no respete el formato se considera incorrecta. ");
+        
+        String cadena = "";
+        int correctas = 0;
+        int incorrectas = 0;
+        
         do{
-            String cadena = "";
+            
             System.out.println("Por favor ingrese una cadena: ");
             cadena = leer.nextLine();
             
+            if(cadena.length() == 5 && cadena.substring(0, 1).equals("X") && cadena.substring(4, 5).equals("O") || cadena.equals("&&&&&")){
             
-        }while(cadena.lenght() == 5);
+                correctas = correctas + 1;
+            
+            }else{
+            
+                incorrectas = incorrectas + 1;
+                
+            }
+            
+            
+        }while(!cadena.equals("&&&&&"));
         
-        
+        System.out.println("");
+        System.out.println("INFORME FINAL");
+        System.out.println("La cantidad de lecturas correctas fueron " + correctas);
+        System.out.println("La cantidad de lecturas incorrectas fueron " + incorrectas);
     }
     
 }
