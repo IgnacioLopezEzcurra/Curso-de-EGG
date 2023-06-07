@@ -63,8 +63,6 @@ public class Ejercicio19 {
             for (int i = 0; i < 3; i++) {
                 matrizB[j][i] = matriz[i][j];
             }
-            
-            
 
         }
 
@@ -73,14 +71,14 @@ public class Ejercicio19 {
     
      public static void antiSimetrica(int matriz[][], int matrizB[][]) {
 
-         boolean bandera = false;
+         boolean bandera = true;
          
         for (int i = 0; i < 3; i++) {
 
             for (int j = 0; j < 3; j++) {
                 
-                if (matriz[i][j] == -matriz[i][j]){
-                bandera = true;
+                if (matriz[i][j] != -matrizB[i][j]){
+                bandera = false;
                 }
             }
 
