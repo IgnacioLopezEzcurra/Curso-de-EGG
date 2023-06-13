@@ -8,7 +8,7 @@ package EjerciciosExtra;
 
 import java.util.Scanner;
 
-public class Extra7 {
+public class Extra7B {
 
     public static void main(String[] args) {
 
@@ -30,11 +30,12 @@ public class Extra7 {
         Scanner leer = new Scanner(System.in);
         int i = 0;
 
-        while (i < cant) {
+        do {
             System.out.println("Ingrese el valor del número N° " + (i + 1));
             numeros[i] = leer.nextDouble();
             i++;
-        }
+
+        } while (i < cant);
 
     }
 
@@ -44,10 +45,10 @@ public class Extra7 {
         double suma = 0;
         int i = 0;
 
-        while (i < cant) {
+        do {
             suma = suma + numeros[i];
             i++;
-        }
+        } while (i < cant);
 
         promedio = suma / cant;
 
@@ -61,8 +62,7 @@ public class Extra7 {
         double max = -999999;
         int i = 0;
 
-        while (i < cant) {
-
+        do {
             if (numeros[i] >= max) {
 
                 max = numeros[i];
@@ -73,7 +73,7 @@ public class Extra7 {
             }
 
             i++;
-        }
+        } while (i < cant);
 
         System.out.println("EL numero minimo ingresado es " + min);
         System.out.println("EL numero máximo ingresado es " + max);
