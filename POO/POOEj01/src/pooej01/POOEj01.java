@@ -14,6 +14,10 @@ public class POOEj01 {
         //Instanciación utilizando el constructor por parámetro
         Persona segundaPersona = new Persona("Mariano");
         
+        
+        
     }
+    
+    
     
 }
