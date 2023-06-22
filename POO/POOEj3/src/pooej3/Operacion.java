@@ -27,7 +27,7 @@ public class Operacion {
     public Operacion() {
     }
 
-    public Operacion(int numero1, int numero2) {
+    public Operacion(double numero1, double numero2) {
         this.numero1 = numero1;
         this.numero2 = numero2;
     }
@@ -36,7 +36,7 @@ public class Operacion {
         return numero1;
     }
 
-    public void setNumero1(int numero1) {
+    public void setNumero1(double numero1) {
         this.numero1 = numero1;
     }
 
@@ -44,16 +44,16 @@ public class Operacion {
         return numero2;
     }
 
-    public void setNumero2(int numero2) {
+    public void setNumero2(double numero2) {
         this.numero2 = numero2;
     }
 
     public void CrearOperacion() {
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         System.out.println("Introduce el primer numero:");
-        this.numero1 = leer.nextInt();
+        this.numero1 = leer.nextDouble();
         System.out.println("Introduce el segundo numero:");
-        this.numero2 = leer.nextInt();
+        this.numero2 = leer.nextDouble();
     }
 
     public double sumar() {
@@ -70,7 +70,7 @@ public class Operacion {
 
     public double multiplicacion() {
         double mult;
-        if (numero1 == 0 | numero2 == 0) {
+        if (numero1 == 0 || numero2 == 0) {
             System.out.println("Error");
             return mult = 0;
         } else {
