@@ -127,26 +127,22 @@ public class Persona {
 //función devuelve un 1. 
     public int calcularIMC() {
         double pesoIdeal = this.peso / (this.altura * this.altura);
-        int retorno = 0;
+//        int retorno = 0;
 
         if (pesoIdeal < 20) {
-            System.out.println("La persona está por debajo de un peso ideal");
-            retorno = -1;
-        } else if (pesoIdeal > 20 && pesoIdeal < 25) {
-            System.out.println("La persona esta en su peso ideal");
-            retorno = 0;
-        } else if (pesoIdeal > 25) {
-            System.out.println("La persona tiene sobrepeso");
-            retorno = 1;
+            return -1;
+        } else if (pesoIdeal >= 20 && pesoIdeal <= 25) {
+            return 0;
+        } else  {
+            return 1;
         }
 
-        return retorno;
+//        return retorno;
 
     }
 
     public boolean esMayorDeEdad() {
-        System.out.println("Es mayor de edad?");
-        return this.edad > 18;
+        return this.edad >= 18;
     }
 
 }
