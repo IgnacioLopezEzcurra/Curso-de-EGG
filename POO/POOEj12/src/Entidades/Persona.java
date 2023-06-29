@@ -50,7 +50,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", fechaNac=" + fechaNac + '}';
+        return "Persona{" + "nombre= " + nombre + ", fechaNac= " + fechaNac + '}';
     }
     
     

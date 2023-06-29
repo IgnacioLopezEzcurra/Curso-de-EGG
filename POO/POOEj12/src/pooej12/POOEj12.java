@@ -20,19 +20,25 @@ package pooej12;
 import Entidades.Persona;
 import Servicios.PersonaServicios;
 
-
 public class POOEj12 {
 
-
     public static void main(String[] args) {
-        
+
         PersonaServicios ps = new PersonaServicios();
-        
+
         Persona p1 = ps.crearPersona();
+        System.out.println("");
         Persona p2 = ps.crearPersona();
+        System.out.println("");
+        System.out.println("---IMPRIMIRMOS P2---");
         System.out.println(p2);
+        System.out.println("");
+        System.out.println("---IMPRIMIRMOS P1---");
         System.out.println(p1);
-      
+        System.out.println("");
+        System.out.println("---CALCULAMOS EDAD DE P1---");
+        ps.calcularEdad(p1);
+
     }
-    
+
 }

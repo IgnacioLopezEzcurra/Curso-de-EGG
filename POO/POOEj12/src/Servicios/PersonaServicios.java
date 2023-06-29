@@ -18,6 +18,9 @@ anterior.
 package Servicios;
 
 import Entidades.Persona;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -29,16 +32,30 @@ public class PersonaServicios {
         System.out.println("Usted esta por crear una nueva persona");
         System.out.println("Ingrese su nombre: ");
         String nombre = leer.nextLine();
-        System.out.println("Ingrese su fecha de nacimiento (dia/mes/año): ");
+        System.out.println("Fecha de nacimiento (dia/mes/año)");
+        System.out.println("Ingrese su día: ");
         int dia = leer.nextInt();
         System.out.println("Ingrese su mes: ");
-        int mes = leer.nextInt()-1;
+        int mes = leer.nextInt() - 1;
         System.out.println("Ingrese su año: ");
         int anio = leer.nextInt();
         Date fechaNac = new Date(anio - 1900, mes, dia);
 
         return new Persona(nombre, fechaNac);
-        
+
     }
+
+    public void calcularEdad(Persona per) {
+        LocalDate fechaNacimiento = per.getFechaNac().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+
+        int años = periodo.getYears();
+        int meses = periodo.getMonths();
+        int días = periodo.getDays();
+
+        System.out.println("La edad de la persona es " + años + " años, " + meses + " meses y " + días + " días.");
+    }
+    
 
 }
