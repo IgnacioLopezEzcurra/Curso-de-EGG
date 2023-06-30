@@ -61,7 +61,7 @@ public class CursoServicios {
         System.out.println("Ingrese precio por hora: ");
         double precioPorHora = leer.nextDouble();
         
-        Curso curso = new Curso(nombre, turno, cantHorasPorDia, cantDiasPorSemana, precioPorHora );
+        Curso curso = new Curso(nombre, turno, cantHorasPorDia, cantDiasPorSemana, precioPorHora);
         cargarAlumnos(curso); // Llamada al método cargarAlumnos() para ingresar los nombres de los alumnos
         
         return curso;
