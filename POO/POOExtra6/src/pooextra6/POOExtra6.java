@@ -61,6 +61,7 @@ package pooextra6;
 
 import Entidades.Ahorcado;
 import Servicios.AhorcadoServicios;
+import java.util.Scanner;
 
 
 public class POOExtra6 {
@@ -68,9 +69,26 @@ public class POOExtra6 {
   
     public static void main(String[] args) {
         
+        Scanner leer = new Scanner (System.in);
+        
         Ahorcado a1 = new Ahorcado();
         AhorcadoServicios as = new AhorcadoServicios();
+        as.crearJuego(a1);
+        as.longitud(a1);
         
+//        System.out.println("Ingrese una letra a buscar en la palabra");
+//        
+//        as.buscar(leer.nextLine(), a1);
+        
+        System.out.println("Ingrese nuevamente una letra a buscar en la palabra");
+        System.out.println(as.encontradas(leer.nextLine(), a1));
+        
+        System.out.println(a1.getCantJugadas());
+        
+        System.out.println("Ingrese nuevamente una letra a buscar en la palabra");
+        System.out.println(as.encontradas(leer.nextLine(), a1));
+        
+        as.intentos(a1);
         
         
     }
