@@ -33,6 +33,9 @@ public class POOEj5 {
         System.out.println("Ahora retiramos");
         c1.retirar(leer.nextDouble());
         System.out.println(c1);
+        System.out.println("Ahora hacemos extraccion rapida (quita 20%)");
+        c1.extraccionRapida();
+        System.out.println(c1);
         System.out.println("Ahora retiramos mas de lo que hay");
         c1.retirar(leer.nextDouble());
         System.out.println(c1);

@@ -62,28 +62,29 @@ package Entidades;
 
 public class Ahorcado {
     
-    private String palabra[];
+   //private String palabra[]; asi lo hice yo inicialmente
+    private char[] palabra; // chatgpt me propone usar char
     private int cantLetrasEncontradas;
     private int cantJugadas;
 
     public Ahorcado() {
     }
 
-    public Ahorcado(String[] palabra, int cantLetrasEncontradas, int cantJugadas) {
+    public Ahorcado(char[] palabra, int cantLetrasEncontradas, int cantJugadas) {
         this.palabra = palabra;
         this.cantLetrasEncontradas = cantLetrasEncontradas;
         this.cantJugadas = cantJugadas;
     }
     
     public void setTamanoPalabra(int tamano) {
-        this.palabra = new String[tamano];
+        this.palabra = new char[tamano];
     }
 
-    public String[] getPalabra() {
+    public char[] getPalabra() {
         return palabra;
     }
 
-    public void setPalabra(String[] palabra) {
+    public void setPalabra(char[] palabra) {
         this.palabra = palabra;
     }
 
