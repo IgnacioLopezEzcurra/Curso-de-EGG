@@ -18,6 +18,7 @@ anterior.
 package Servicios;
 
 import Entidades.Persona;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -56,6 +57,24 @@ public class PersonaServicios {
 
         System.out.println("La edad de la persona es " + años + " años, " + meses + " meses y " + días + " días.");
     }
+    
+    public boolean menorQue(Persona persona, int edad) {
+        LocalDate fechaNacimiento = persona.getFechaNac().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+
+        int años = periodo.getYears();
+        return periodo.getYears() < edad;
+    }
+    
+ 
+    public void mostrarPersona(Persona persona) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("Nombre: " + persona.getNombre());
+        System.out.println("Fecha de Nacimiento: " + dateFormat.format(persona.getFechaNac()));
+        calcularEdad(persona);
+    }
+
     
 
 }

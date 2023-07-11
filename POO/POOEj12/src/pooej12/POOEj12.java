@@ -28,16 +28,18 @@ public class POOEj12 {
 
         Persona p1 = ps.crearPersona();
         System.out.println("");
-        Persona p2 = ps.crearPersona();
-        System.out.println("");
-        System.out.println("---IMPRIMIRMOS P2---");
-        System.out.println(p2);
-        System.out.println("");
+//        Persona p2 = ps.crearPersona();
+//        System.out.println("");
+//        System.out.println("---IMPRIMIRMOS P2---");
+//        System.out.println(p2);
+//        System.out.println("");
         System.out.println("---IMPRIMIRMOS P1---");
         System.out.println(p1);
         System.out.println("");
         System.out.println("---CALCULAMOS EDAD DE P1---");
         ps.calcularEdad(p1);
+        System.out.println("Es menor que 30?: " + ps.menorQue(p1, 30));
+        ps.mostrarPersona(p1);
 
     }
 
