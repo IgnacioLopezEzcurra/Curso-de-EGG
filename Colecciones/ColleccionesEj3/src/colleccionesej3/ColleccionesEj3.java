@@ -13,12 +13,31 @@ promedio final, devuelto por el método y mostrado en el main.
  */
 package colleccionesej3;
 
+import colleccionesej3.entidades.Alumno;
+import colleccionesej3.servicios.AlumnoServicio;
+import java.util.Scanner;
 
 public class ColleccionesEj3 {
 
-
     public static void main(String[] args) {
-        
+
+        AlumnoServicio as = new AlumnoServicio();
+
+        as.crearAlumno();
+
+        as.imprimirListaAlumnos();
+
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del alumno para calcular su promedio final:");
+        String nombreAlumno = leer.nextLine();
+
+        double promedioFinal = as.notaFinal(nombreAlumno);
+        if (promedioFinal != -1) {
+            System.out.println("El promedio final de " + nombreAlumno + " es: " + promedioFinal);
+        } else {
+            System.out.println("No se encontró al alumno " + nombreAlumno + " en la lista.");
+        }
+
     }
-    
+
 }
