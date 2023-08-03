@@ -20,17 +20,19 @@ pantalla.
  */
 package colleccionesej4.entidades;
 
+import java.util.Comparator;
+
 
 public class Pelicula {
     
     private String titulo;
     private String director;
-    private int duracion;
+    private double duracion;
 
     public Pelicula() {
     }
 
-    public Pelicula(String titulo, String director, int duracion) {
+    public Pelicula(String titulo, String director, double duracion) {
         this.titulo = titulo;
         this.director = director;
         this.duracion = duracion;
@@ -52,11 +54,11 @@ public class Pelicula {
         this.director = director;
     }
 
-    public int getDuracion() {
+    public double getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(double duracion) {
         this.duracion = duracion;
     }
 
@@ -65,6 +67,19 @@ public class Pelicula {
         return "Pelicula{" + "titulo=" + titulo + ", director=" + director + ", duracion=" + duracion + '}';
     }
     
-    
+//    public static Comparator<Pelicula> compararDuracion = new Comparator<Pelicula>(){
+//    
+//        @Override
+//        public int compare(Pelicula p1, Pelicula p2){
+//        
+//            return p2.getDuracion().compareTo(p1.getDuracion());
+//        }
+//
+//        @Override
+//        public Comparator<Pelicula> reversed() {
+//            return Comparator.super.reversed(); //To change body of generated methods, choose Tools | Templates.
+//        }
+//    
+//    };
     
 }

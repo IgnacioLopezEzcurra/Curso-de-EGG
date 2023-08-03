@@ -20,18 +20,37 @@ pantalla.
  */
 package colleccionesej4;
 
+import colleccionesej4.entidades.Pelicula;
 import colleccionesej4.servicios.PeliculaServicios;
-
+import java.util.Collections;
 
 public class ColleccionesEj4 {
 
-
     public static void main(String[] args) {
-        
+
         PeliculaServicios ps = new PeliculaServicios();
         ps.crearPelicula();
+        System.out.println("\n---AQUI IMPRIMIMOS TODA LA LISTA---");
         ps.mostrarPeliculas();
-       
+
+        System.out.println("\n---AQUI IMPRIMIMOS LAS MAYORES A 1 HORA---");
+        ps.mostrarPeliculasMayorAUnaHora();
+
+        System.out.println("\n---AQUI IMPRIMIMOS DURACION DE MENOR A MAYOR---");
+        ps.ordenarDuracionMenorMayor();
+        ps.mostrarPeliculas();
+
+        System.out.println("\n AHORA AL REVES");
+        ps.ordenarDuracionMayorMenor();
+        ps.mostrarPeliculas();
+
+        System.out.println("\n---AQUI IMPRIMIMOS POR DIRECTOR ALFABETICAMENTE---");
+        ps.ordenarPorDirector();
+        ps.mostrarPeliculas();
+
+        System.out.println("\n---AQUI IMPRIMIMOS POR TITULO ALFABETICAMENTE---");
+        ps.ordenarPorTitulo();
+        ps.mostrarPeliculas();
     }
-    
+
 }
