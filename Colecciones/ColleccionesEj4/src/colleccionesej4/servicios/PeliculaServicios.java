@@ -102,7 +102,6 @@ public class PeliculaServicios {
     public void ordenarDuracionMayorMenor() {
         ordenarDuracionMenorMayor();
         Collections.reverse(listaPelis);
-//        reverse(List<T> lista) 
 
     }
 
