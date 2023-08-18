@@ -95,122 +95,122 @@ y el revolver para guardarlos en los atributos del juego.*/
                 jugador.setId(1);
                 jugadores.add(jugador);
                 break;
-                
+
             case 2:
                 System.out.println("Se ha seleccionado 2 jugadores, por favor ingresen sus datos.");
 
                 for (int i = 0; i < 2; i++) {
                     Jugador jugador2 = new Jugador();
-                    System.out.print("Nombre del Jugador N°" + (i+1) + " ");
+                    System.out.print("Nombre del Jugador N°" + (i + 1) + " ");
                     jugador2.setNombre(leer.next());
                     jugador2.setId(i + 1);
                     jugadores.add(jugador2);
                 }
 
                 break;
-                
+
             case 3:
                 System.out.println("Se ha seleccionado 3 jugadores, por favor ingresen sus datos.");
 
                 for (int i = 0; i < 3; i++) {
                     Jugador jugador3 = new Jugador();
-                    System.out.print("Nombre del Jugador N°" + (i+1) + " ");
+                    System.out.print("Nombre del Jugador N°" + (i + 1) + " ");
                     jugador3.setNombre(leer.next());
                     jugador3.setId(i + 1);
                     jugadores.add(jugador3);
                 }
                 break;
-                
+
             case 4:
                 System.out.println("Se ha seleccionado 4 jugadores, por favor ingresen sus datos.");
 
                 for (int i = 0; i < 4; i++) {
                     Jugador jugador4 = new Jugador();
-                    System.out.print("Nombre del Jugador N°" + (i+1) + " ");
+                    System.out.print("Nombre del Jugador N°" + (i + 1) + " ");
                     jugador4.setNombre(leer.next());
                     jugador4.setId(i + 1);
                     jugadores.add(jugador4);
                 }
                 break;
-                
+
             case 5:
                 System.out.println("Se ha seleccionado 5 jugadores, por favor ingresen sus datos.");
 
                 for (int i = 0; i < 5; i++) {
                     Jugador jugador5 = new Jugador();
-                    System.out.print("Nombre del Jugador N°" + (i+1) + " ");
+                    System.out.print("Nombre del Jugador N°" + (i + 1) + " ");
                     jugador5.setNombre(leer.next());
                     jugador5.setId(i + 1);
                     jugadores.add(jugador5);
                 }
                 break;
-                
+
             case 6:
                 System.out.println("Se ha seleccionado 6 jugadores, por favor ingresen sus datos.");
 
                 for (int i = 0; i < 6; i++) {
                     Jugador jugador6 = new Jugador();
-                    System.out.print("Nombre del Jugador N°" + (i+1) + " ");
+                    System.out.print("Nombre del Jugador N°" + (i + 1) + " ");
                     jugador6.setNombre(leer.next());
                     jugador6.setId(i + 1);
                     jugadores.add(jugador6);
                 }
                 break;
-                
+
             default:
                 System.out.println("Por defecto la cantidad de jugadores será de 6.");
                 for (int i = 0; i < 6; i++) {
                     Jugador jugador6 = new Jugador();
-                    System.out.print("Nombre del Jugador N°" + (i+1) + " ");
+                    System.out.print("Nombre del Jugador N°" + (i + 1) + " ");
                     jugador6.setNombre(leer.next());
                     jugador6.setId(i + 1);
                     jugadores.add(jugador6);
                 }
                 break;
         }
-        
+
         revolver.llenarRevolver();
 
     }
-    
+
     /*ronda(): cada ronda consiste en un jugador que se apunta con el revolver de agua y
 aprieta el gatillo. Sí el revolver tira el agua el jugador se moja y se termina el juego, sino se
 moja, se pasa al siguiente jugador hasta que uno se moje. Si o si alguien se tiene que
 mojar. Al final del juego, se debe mostrar que jugador se mojó.*/
-    
-    public void ronda(){
-        
-        System.out.println("Comienza el juego!");
-        
-        
-    
+    public void ronda() {
+
+        System.out.println("\n Comienza el juego!");
+
         for (int i = 0; i < jugadores.size(); i++) {
-            
-            System.out.println("Turno del jugador " + jugadores.get(i).getNombre() + " N°" + jugadores.get(i).getId());
-            
+
+            System.out.println("\n Turno del jugador " + jugadores.get(i).getNombre() + " N°" + jugadores.get(i).getId());
+
             System.out.println("(verifico el estado del jugador) El jugador esta mojado? " + jugadores.get(i).getMojado());
-            System.out.println("Procede a disparar");
+            System.out.print("Verificamos la posicion Actual y del Agua, si son iguales el jugador se moja,"
+                    + "\n sino continua al siguiente ");
             System.out.println(revolver.toString());
+            System.out.println("\n Procede a disparar");
             
-            if(jugadores.get(i).disparo(revolver)){
-            
+
+            if (jugadores.get(i).disparo(revolver)) {
+
                 System.out.println("El jugador se ha mojado! fin del juego");
                 break;
-                
+
             } else {
-            
+
                 System.out.println("El jugador no se ha mojado, continua el siguiente.");
-                if(i==jugadores.size() - 1){
-                
-                    i = -1;
-                    
-                }
-                
-                
+
             }
-            
+
+            if (i == jugadores.size() - 1) {
+
+                i = -1;
+
+            }
+
         }
-        
+
     }
 
 }

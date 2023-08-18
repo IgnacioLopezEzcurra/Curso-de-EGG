@@ -35,12 +35,10 @@ moja, se pasa al siguiente jugador hasta que uno se moje. Si o si alguien se tie
 mojar. Al final del juego, se debe mostrar que jugador se mojó.
 Pensar la lógica necesaria para realizar esto, usando los atributos de la clase Juego.
  */
-
 package relacionesej2.entidades;
 
-
 public class Jugador {
-    
+
     private int id;
     private String nombre;
     private boolean mojado;
@@ -83,23 +81,24 @@ public class Jugador {
     public String toString() {
         return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", mojado=" + mojado + '}';
     }
-    
-    public boolean disparo(Revolver r){
+
+    public boolean disparo(Revolver r) {
 //     el método, recibe el revolver de agua y llama a los métodos de
 //mojar() y siguienteChorro() de Revolver. El jugador se apunta, aprieta el gatillo y si el
 //revolver tira el agua, el jugador se moja. El atributo mojado pasa a false y el método
 //devuelve true, sino false.
 
-    if(r.mojar()){
-        
+        if (r.mojar()) {
+
+           
+            this.mojado = true;
+
+        }
+
         r.siguienteChorro();
-        this.mojado = true;
-        
+
+        return this.mojado;
+
     }
-  
-    return this.mojado;
-    
-    }
-    
-    
+
 }
