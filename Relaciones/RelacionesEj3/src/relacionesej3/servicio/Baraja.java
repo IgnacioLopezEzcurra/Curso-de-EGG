@@ -133,44 +133,52 @@ public class Baraja {
         }
 
     }
-    
-    public void siguienteCarta(){
-    
-        if(baraja.size()==0){
+
+    public void siguienteCarta() {
+
+        if (baraja.size() == 0) {
             System.out.println("\nNo quedan mas cartas en el mazo.");
-        } else{
-        
+        } else {
+
             System.out.println("\nLa siguiente carta es " + baraja.get(0));
-            
+
         }
-    
-    }
-    
-    public void cartasDisponibles(){
-    
-        System.out.println("\nCartas disponibles: " + baraja.size());
-        
+
     }
 
-    public void darCartas(Baraja mazoQueRecibe){
-        
+    public void cartasDisponibles() {
+
+        System.out.println("\nCartas disponibles: " + baraja.size());
+
+    }
+
+    public void darCartas(Baraja mazoQueRecibe) {
+
         int cant = 0;
         System.out.println("\nIndique la cantidad de cartas que desea obtener: ");
         cant = leer.nextInt();
-        
-        if(baraja.size()<cant || baraja.size()==0){
+
+        if (baraja.size() < cant || baraja.size() == 0) {
             System.out.println("\nEl mazo no dispone de la cantidad que pide");
-        } else{
-        for (int i = 0; i < cant; i++) {
-            System.out.println("\nSe entrega la carta " + baraja.get(i));
-            Carta cartaQueAgrego = baraja.get(i);
-            mazoQueRecibe.baraja.add(cartaQueAgrego);
-            baraja.remove(i);
-         }
+        } else {
+//        for (int i = 0; i < cant; i++) {
+//            System.out.println("\nSe entrega la carta " + baraja.get(i));
+//            Carta cartaQueAgrego = baraja.get(i);
+//            mazoQueRecibe.baraja.add(cartaQueAgrego);
+//            baraja.remove(i);
+//         } ASI LO PENSE YO ORIGINALMENTE
+            ArrayList<Carta> cartasEntregadas = new ArrayList<>();
+
+            for (int i = 0; i < cant; i++) {
+                System.out.println("\nSe entrega la carta " + baraja.get(i));
+                Carta cartaQueAgrego = baraja.get(i);
+                cartasEntregadas.add(cartaQueAgrego);
+            }
+
+            baraja.removeAll(cartasEntregadas);
+            mazoQueRecibe.baraja.addAll(cartasEntregadas);
         }
-        
-        
-        
+
     }
-    
+
 }
