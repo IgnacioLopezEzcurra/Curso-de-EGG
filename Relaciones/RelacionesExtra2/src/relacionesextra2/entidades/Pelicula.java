@@ -25,26 +25,66 @@ libre en la sala y si tiene la edad requerida para ver la película. En caso de 
 ocupado se le debe buscar uno libre.
 Al final del programa deberemos mostrar la tabla, podemos mostrarla con la letra y numero de
 cada asiento o solo las X y espacios vacíos.
+
+
  */
-
-package relacionesextra2;
-
-import relacionesextra2.entidades.Cine;
-import relacionesextra2.servicios.CineServicios;
+package relacionesextra2.entidades;
 
 
-public class RelacionesExtra2 {
+public class Pelicula {
+    
+    private String titulo;
+    private String duracion;
+    private int edadMin;
+    private String director;
 
-
-    public static void main(String[] args) {
-        
-        CineServicios cs = new CineServicios();
-        
-        Cine cine = cs.crearCine();
-        cs.mostrarSala(cine.getAsientos());
-        
-     
-        
+    public Pelicula() {
     }
+
+    public Pelicula(String titulo, String duracion, int edadMin, String director) {
+        this.titulo = titulo;
+        this.duracion = duracion;
+        this.edadMin = edadMin;
+        this.director = director;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
+
+    public int getEdadMin() {
+        return edadMin;
+    }
+
+    public void setEdadMin(int edadMin) {
+        this.edadMin = edadMin;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    @Override
+    public String toString() {
+        return "Pelicula{" + "titulo=" + titulo + ", duracion=" + duracion + ", edadMin=" + edadMin + ", director=" + director + '}';
+    }
+    
+    
     
 }

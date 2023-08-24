@@ -27,24 +27,80 @@ Al final del programa deberemos mostrar la tabla, podemos mostrarla con la letra
 cada asiento o solo las X y espacios vacíos.
  */
 
-package relacionesextra2;
+package relacionesextra2.entidades;
 
-import relacionesextra2.entidades.Cine;
-import relacionesextra2.servicios.CineServicios;
+import java.util.ArrayList;
 
+public class Cine {
 
-public class RelacionesExtra2 {
+    private String asientos[][];
+    private Pelicula pelicula;
+    private int precio;
+    private ArrayList<Espectador> espectadores;
 
+    public Cine() {
+        asientos = new String [8][6];    
+        crearSala(asientos);
+    }
 
-    public static void main(String[] args) {
+    public Cine(Pelicula pelicula, int precio, ArrayList<Espectador> espectadores) {
+        this.pelicula = pelicula;
+        this.precio = precio;
+        this.espectadores = new ArrayList();
+    }
+
+    public String[][] getAsientos() {
+        return asientos;
+    }
+
+    public void setAsientos(String[][] asientos) {
+        this.asientos = asientos;
+    }
+
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public ArrayList<Espectador> getEspectadores() {
+        return espectadores;
+    }
+
+    public void setEspectadores(ArrayList<Espectador> espectadores) {
+        this.espectadores = espectadores;
+    }
+
+    @Override
+    public String toString() {
+        return "Cine{" + "asientos=" + asientos + ", pelicula=" + pelicula + ", precio=" + precio + ", espectadores=" + espectadores + '}';
+    }
+
+    
+    public void crearSala(String[][] asientos){
+    
+         char letra = 'A';
         
-        CineServicios cs = new CineServicios();
-        
-        Cine cine = cs.crearCine();
-        cs.mostrarSala(cine.getAsientos());
-        
-     
+        for (int fila = 0; fila < asientos.length; fila++) {
+            for (int columna = 0; columna < asientos[0].length; columna++) {
+                  if(columna==0){
+                letra = 'A';
+                }
+                asientos[fila][columna] = Integer.toString(8 - fila) + " " + Character.toString(letra);
+                letra++;
+            }
+        }
         
     }
-    
+
 }
