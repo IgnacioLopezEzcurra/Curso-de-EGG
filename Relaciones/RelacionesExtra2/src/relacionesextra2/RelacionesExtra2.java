@@ -41,8 +41,12 @@ public class RelacionesExtra2 {
         CineServicios cs = new CineServicios();
         
         Cine cine = cs.crearCine();
+        System.out.println("\n---SALA DE CINE SIN PUBLICO---");
         cs.mostrarSala(cine.getAsientos());
-        
+        //String[][] asientos, Pelicula pelicula, int precio, ArrayList<Espectador> espectadores
+        cs.agregarEspectador(cine.getAsientos(), cine.getPelicula(), cine.getPrecio(), cine.getEspectadores());
+        System.out.println("\n---SALA DE CINE CON PUBLICO---");
+        cs.mostrarSala(cine.getAsientos());
      
         
     }

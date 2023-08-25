@@ -28,32 +28,27 @@ cada asiento o solo las X y espacios vacíos.
 
 
  */
-
-
-
 package relacionesextra2.servicios;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import relacionesextra2.entidades.Cine;
 import relacionesextra2.entidades.Espectador;
 import relacionesextra2.entidades.Pelicula;
 
-
 public class CineServicios {
-    
+
     private Scanner leer;
 
     public CineServicios() {
         leer = new Scanner(System.in).useDelimiter("\n");
     }
-    
-    
-    
-    public Cine crearCine(){
-        
+
+    public Cine crearCine() {
+
         Cine cine = new Cine();
-    
+
         System.out.println("---Creacion de nuevo Cine Maravilla---");
         System.out.println("Por favor ingrese el valor de las entradas para este cine:");
         cine.setPrecio(leer.nextInt());
@@ -61,12 +56,12 @@ public class CineServicios {
         cine.setPelicula(peli);
         ArrayList<Espectador> lista = crearEspectadores();
         cine.setEspectadores(lista);
-        
+
         return cine;
     }
 
     public Pelicula agregarPelicula() {
-        
+
         Pelicula peli = new Pelicula();
         System.out.println("Ingrese el titulo de la película");
         peli.setTitulo(leer.next());
@@ -76,47 +71,82 @@ public class CineServicios {
         peli.setEdadMin(leer.nextInt());
         System.out.println("Ingrese el Director de esta película:");
         peli.setDirector(leer.next());
-        
+
         return peli;
     }
-    
-    public ArrayList<Espectador> crearEspectadores(){
-        
+
+    public ArrayList<Espectador> crearEspectadores() {
+
         ArrayList<Espectador> lista = new ArrayList();
-    
+
         System.out.println("Por favor indique que cantidad de espectadores habrá hoy:");
         int cant = leer.nextInt();
-        
+
         for (int i = 0; i < cant; i++) {
             Espectador esp = new Espectador();
-            System.out.println("---VALIDANDO DATOS DEL ESPECTADOR N°" + (i+1) + "---");
+            System.out.println("---VALIDANDO DATOS DEL ESPECTADOR N°" + (i + 1) + "---");
             System.out.println("Ingrese el nombre del espectador:");
             esp.setNombre(leer.next());
             System.out.println("Ingrese la edad del espectador:");
             esp.setEdad(leer.nextInt());
             System.out.println("Ingrese el dinero disponible del pobre hombre:");
             esp.setDineroDisponible(leer.nextInt());
-            
+
             lista.add(esp);
-            
+
         }
-        
+
         return lista;
-        
+
     }
-    
-    public void mostrarSala(String[][] asientos){
-    
-           
+
+    public void mostrarSala(String[][] asientos) {
+
         for (int fila = 0; fila < asientos.length; fila++) {
             for (int columna = 0; columna < asientos[0].length; columna++) {
                 System.out.print("[" + asientos[fila][columna] + "]");
             }
             System.out.println();
         }
-        
+
     }
-    
-    
-    
+
+    public void agregarEspectador(String[][] asientos, Pelicula pelicula, int precio, ArrayList<Espectador> espectadores) {
+        Random random = new Random();
+
+        int i = 0; // Inicializamos el contador de espectadores
+
+        while (i < espectadores.size()) { // Iteramos a través de todos los espectadores
+            int fila = random.nextInt(8);
+            int columna = random.nextInt(6);
+
+            if (!asientos[fila][columna].contains("X")) {
+                if (espectadores.get(i).getEdad() >= pelicula.getEdadMin() && espectadores.get(i).getDineroDisponible() >= precio) {
+                    asientos[fila][columna] += " X";
+                    i++;
+                }
+            }
+
+            // Verificar si todos los asientos están ocupados
+            boolean todosOcupados = true;
+            for (int f = 0; f < 8; f++) {
+                for (int c = 0; c < 6; c++) {
+                    if (!asientos[f][c].contains("X")) {
+                        todosOcupados = false;
+                        break;
+                    }
+                }
+                if (!todosOcupados) {
+                    break;
+                }
+            }
+
+            // Si todos los asientos están ocupados, salir del bucle
+            if (todosOcupados && i < espectadores.size()) {
+                System.out.println("No hay más asientos disponibles para los espectadores restantes.");
+                break;
+            }
+        }
+    }
+
 }
