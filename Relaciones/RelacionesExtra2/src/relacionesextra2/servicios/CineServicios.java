@@ -75,22 +75,46 @@ public class CineServicios {
         return peli;
     }
 
-    public ArrayList<Espectador> crearEspectadores() {
+//    public ArrayList<Espectador> crearEspectadores() {
+//
+//        ArrayList<Espectador> lista = new ArrayList();
+//
+//        System.out.println("Por favor indique que cantidad de espectadores habrá hoy:");
+//        int cant = leer.nextInt();
+//
+//        for (int i = 0; i < cant; i++) {
+//            Espectador esp = new Espectador();
+//            System.out.println("---VALIDANDO DATOS DEL ESPECTADOR N°" + (i + 1) + "---");
+//            System.out.println("Ingrese el nombre del espectador:");
+//            esp.setNombre(leer.next());
+//            System.out.println("Ingrese la edad del espectador:");
+//            esp.setEdad(leer.nextInt());
+//            System.out.println("Ingrese el dinero disponible del pobre hombre:");
+//            esp.setDineroDisponible(leer.nextInt());
+//
+//            lista.add(esp);
+//
+//        }
+//
+//        return lista;
+//
+//    }
+    public ArrayList<Espectador> crearEspectadores() { // aqui veo que pasa si creo una lista grande que sobrepase la sala
 
         ArrayList<Espectador> lista = new ArrayList();
 
         System.out.println("Por favor indique que cantidad de espectadores habrá hoy:");
-        int cant = leer.nextInt();
+        int cant = 55;
 
         for (int i = 0; i < cant; i++) {
             Espectador esp = new Espectador();
             System.out.println("---VALIDANDO DATOS DEL ESPECTADOR N°" + (i + 1) + "---");
             System.out.println("Ingrese el nombre del espectador:");
-            esp.setNombre(leer.next());
+            esp.setNombre("Nacho " + (i + 1));
             System.out.println("Ingrese la edad del espectador:");
-            esp.setEdad(leer.nextInt());
+            esp.setEdad(50);
             System.out.println("Ingrese el dinero disponible del pobre hombre:");
-            esp.setDineroDisponible(leer.nextInt());
+            esp.setDineroDisponible(2000);
 
             lista.add(esp);
 
@@ -116,37 +140,98 @@ public class CineServicios {
 
         int i = 0; // Inicializamos el contador de espectadores
 
-        while (i < espectadores.size()) { // Iteramos a través de todos los espectadores
+        while (i < espectadores.size() && !estaTodoOcupado(asientos)) { // Iteramos a través de todos los espectadores
             int fila = random.nextInt(8);
             int columna = random.nextInt(6);
 
-            if (!asientos[fila][columna].contains("X")) {
-                if (espectadores.get(i).getEdad() >= pelicula.getEdadMin() && espectadores.get(i).getDineroDisponible() >= precio) {
+//            if (!asientos[fila][columna].contains("X")) { //Aqui antes veia primero si estaba vacio el asiento o no.
+            if (espectadores.get(i).getEdad() >= pelicula.getEdadMin() && espectadores.get(i).getDineroDisponible() >= precio) { //VERIFICO SI LA PERSONA PUEDE VER LA PELICULA
+                //Si el tipo la puede ver entonces ahora si paso a tratar de ubicarlo.
+
+                if (!asientos[fila][columna].contains("X")) {
+
+                    System.out.println(espectadores.get(i).getNombre() + " ha sido ubicado en " + asientos[fila][columna]);
                     asientos[fila][columna] += " X";
                     i++;
-                }
-            }
 
-            // Verificar si todos los asientos están ocupados
-            boolean todosOcupados = true;
-            for (int f = 0; f < 8; f++) {
-                for (int c = 0; c < 6; c++) {
-                    if (!asientos[f][c].contains("X")) {
-                        todosOcupados = false;
+                } else {
+
+                    System.out.println("El asiento  " + asientos[fila][columna] + " ya se encuentra ocupado, probemos de reubicarlo en otro asiento.");
+
+                    if (estaTodoOcupado(asientos)) {
+                        System.out.println("LO SIENTO. Todos los asientos ya han sido ocupados.");
                         break;
+
+                    } else { // Si no estan todos ocupados entonces seguimos buscando asiento
+
+                        do {
+
+//                            fila = random.nextInt(8);
+//                            columna = random.nextInt(6);
+//
+//                            if (!asientos[fila][columna].contains("X")) {
+//
+//                                System.out.println("El asiento + " + asientos[fila][columna] + " ya se encuentra ocupado, probemos de reubicarlo en otro asiento.");
+//
+//                            } else {
+//
+//                                System.out.println(espectadores.get(i).getNombre() + " ha sido ubicado en " + asientos[fila][columna]);
+//                                asientos[fila][columna] += " X";
+//                                 i++;
+//
+//                            }
+                            do {
+                                fila = random.nextInt(8);
+                                columna = random.nextInt(6);
+                            } while (asientos[fila][columna].contains("X")); // mientras asientos tenga una X entonces ubicame otro que NO TENGA
+
+                            System.out.println(espectadores.get(i).getNombre() + " ha sido ubicado en " + asientos[fila][columna]);
+                            asientos[fila][columna] += " X";
+                            i++;
+
+                        } while (estaOcupado(asientos, fila, columna) == true); // Si esta ocupado (true) entonces volvelo a hacer hasta que de false.
+
                     }
-                }
-                if (!todosOcupados) {
-                    break;
+
+//                    break;
+                } // Aqui deberiamos de poner otra opcion en caso de que el asiento esté ocupado.
+//                break;
+            } else { //Si la persona no cumple las condiciones entonces informamos al usuario.
+
+                System.out.println(espectadores.get(i).getNombre() + " no puede ver la pelicula o por falta de dinero o no tiene la edad minima que se solicita."
+                        + "\n Dinero disponible: " + espectadores.get(i).getDineroDisponible() + "\n Edad: " + espectadores.get(i).getEdad());
+                i++;
+
+            }
+
+        }
+
+        if (i == espectadores.size()) {
+            System.out.println("Hemos verificado a cada uno de los espectadores. Programa finalizado.");
+
+        }
+
+    }
+
+    public boolean estaTodoOcupado(String[][] asientos) {
+
+        for (int f = 0; f < 8; f++) {
+            for (int c = 0; c < 6; c++) {
+                if (!asientos[f][c].contains("X")) {
+                    return false;  // Si encuentra un asiento no ocupado, devuelve false
                 }
             }
 
-            // Si todos los asientos están ocupados, salir del bucle
-            if (todosOcupados && i < espectadores.size()) {
-                System.out.println("No hay más asientos disponibles para los espectadores restantes.");
-                break;
-            }
         }
+
+        return true; // Si no se encontró ningún asiento desocupado, devuelve true
+
+    }
+
+    public boolean estaOcupado(String[][] asientos, int f, int c) {
+
+        return asientos[f][c].contains("X"); // Si asientos en esa posicion tiene X entonces devolvera true
+
     }
 
 }
