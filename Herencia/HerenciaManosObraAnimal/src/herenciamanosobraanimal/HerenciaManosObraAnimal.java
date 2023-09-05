@@ -11,6 +11,10 @@ Animal c = new Gato();
 
 Agregaremos a la lista a cada uno y luego, con un for each, recorreremos la lista llamando al 
 método hacerRuido() de cada ítem.
+
+// MANOS A LA OBRA 2
+Vamos a crear una interfaz con un método abstracto. Luego desde el main intentaremos instanciar 
+un objeto a partir de la interfaz
  */
 package herenciamanosobraanimal;
 
@@ -26,16 +30,23 @@ public class HerenciaManosObraAnimal {
         Animal a = new Animal();
         Animal b = new Perro();
         Animal c = new Gato();
-        
-        ArrayList <Animal> lista = new ArrayList();
-        
+
+        ArrayList<Animal> lista = new ArrayList();
+
         lista.add(a);
         lista.add(b);
         lista.add(c);
-        
+
         for (Animal animal : lista) {
             System.out.println(animal.hacerRuido());
         }
+
+        System.out.println("---");
+        a.soySer();
+        System.out.println("---");
+        b.soySer();
+        System.out.println("---");
+        c.soySer();
 
     }
 

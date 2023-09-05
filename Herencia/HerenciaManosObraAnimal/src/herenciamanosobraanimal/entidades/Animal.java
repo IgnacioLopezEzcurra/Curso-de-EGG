@@ -15,12 +15,17 @@ método hacerRuido() de cada ítem.
 package herenciamanosobraanimal.entidades;
 
 
-public class Animal {
+public class Animal implements SerVivo {
     
     public String hacerRuido(){
     
         return "Hola";
         
+    }
+
+    @Override
+    public void soySer() {
+        System.out.println("Hola, soy un ser vivo y he nacido como un animal.");
     }
     
 }

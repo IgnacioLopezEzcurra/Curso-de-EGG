@@ -23,5 +23,12 @@ public class Gato extends Animal{
         return "Miau!";
     }
 
+    @Override
+    public void soySer() {
+        super.soySer(); 
+        System.out.println("Y ese animal es un Gato!");
+    }
+
+    
     
 }

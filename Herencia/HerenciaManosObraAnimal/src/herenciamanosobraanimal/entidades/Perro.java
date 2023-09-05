@@ -22,6 +22,13 @@ public class Perro extends Animal{
     public String hacerRuido() {
         return "Guau!";
     }
+
+    @Override
+    public void soySer() {
+        super.soySer(); 
+        System.out.println("Y ese animal es un Perro!");
+    }
    
+    
     
 }
