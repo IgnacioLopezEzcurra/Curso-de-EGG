@@ -75,12 +75,15 @@ package herenciaej2;
 
 import herenciaej2.entidades.ConsumoEnergetico;
 import herenciaej2.entidades.Electrodomestico;
+import java.util.Scanner;
 
 
 public class HerenciaEj2 {
 
 
     public static void main(String[] args) {
+        
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
         
         Electrodomestico e = new Electrodomestico();
         e.setConsumoEnergetico(ConsumoEnergetico.A);
