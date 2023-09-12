@@ -73,8 +73,10 @@ el precio final de los dos electrodomésticos.
  */
 package herenciaej2;
 
-import herenciaej2.entidades.ConsumoEnergetico;
+
 import herenciaej2.entidades.Electrodomestico;
+import herenciaej2.entidades.Lavadora;
+import herenciaej2.servicio.ElectrodomesticoServicio;
 import java.util.Scanner;
 
 
@@ -85,10 +87,15 @@ public class HerenciaEj2 {
         
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
         
-        Electrodomestico e = new Electrodomestico();
-        e.setConsumoEnergetico(ConsumoEnergetico.A);
-        System.out.println(e.getConsumoEnergetico());
-        System.out.println(e.comprobarConsumoEnergetico('A'));
+        ElectrodomesticoServicio es = new ElectrodomesticoServicio();
+        
+        Electrodomestico e1 = es.crearElectrodomestico();
+        
+        System.out.println(e1.toString());
+        
+        System.out.println("El precio final del producto es " + e1.precioFinal(e1));
+        
+//        Lavadora lava = es.crearLavadora();
         
     }
     
