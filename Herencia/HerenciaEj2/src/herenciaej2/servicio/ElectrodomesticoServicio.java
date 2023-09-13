@@ -62,6 +62,9 @@ public class ElectrodomesticoServicio {
         lav.setConsumoEnergetico(lavadora.getConsumoEnergetico());
         lav.setPeso(lavadora.getPeso());
         lav.setPrecio(lavadora.getPrecio());
+        
+        lav.setElectrodomestico(lavadora);
+        
         return lav;
     }
 

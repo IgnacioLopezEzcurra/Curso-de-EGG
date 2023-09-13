@@ -249,8 +249,11 @@ F $100
             precioPeso = 1000d;
         }
         
+        precioFinal = elec.getPrecio() + precioPeso + precioLetra;
+        
+        this.precio = precioFinal;
 
-        return precioFinal = elec.getPrecio() + precioPeso + precioLetra;
+        return precioFinal;
 
     }
 

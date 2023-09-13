@@ -17,20 +17,15 @@ carga es menor o igual, no se incrementará el precio. Este método debe llamar 
 método padre y añadir el código necesario. Recuerda que las condiciones que hemos 
 visto en la clase Electrodoméstico también deben afectar al precio.
  */
-
-
 package herenciaej2.entidades;
 
-
 public class Lavadora extends Electrodomestico {
-    
+
     private double carga;
+    private Electrodomestico electrodomestico;
+
 
     public Lavadora() {
-    }
-
-    public Lavadora(double carga) {
-        this.carga = carga;
     }
 
     public Lavadora(double carga, double precio, String color, char consumoEnergetico, double peso) {
@@ -45,19 +40,24 @@ public class Lavadora extends Electrodomestico {
     public void setCarga(double carga) {
         this.carga = carga;
     }
+    
+        public Electrodomestico getElectrodomestico() {
+        return electrodomestico;
+    }
+
+    public void setElectrodomestico(Electrodomestico electrodomestico) {
+        this.electrodomestico = electrodomestico;
+    }
 
     @Override
     public double precioFinal(Electrodomestico elec) {
-        super.precioFinal(elec); 
-        
-        if(super.precioFinal(elec)>30) {
-        
-            
-            
+        this.setPrecio(super.precioFinal(elec));
+
+        if (carga >= 30) {
+             this.setPrecio(this.getPrecio()+500);
         }
-)
+        
+        return this.getPrecio();
     }
-    
-    
-    
+
 }
