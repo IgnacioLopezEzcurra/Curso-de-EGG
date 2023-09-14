@@ -70,12 +70,24 @@ Finalmente, en el main debemos realizar lo siguiente:
 Vamos a crear una Lavadora y un Televisor y llamar a los métodos necesarios para mostrar 
 el precio final de los dos electrodomésticos. 
 
+EJERCICIO 3
+ Siguiendo el ejercicio anterior, en el main vamos a crear un ArrayList de Electrodomésticos 
+para guardar 4 electrodomésticos, ya sean lavadoras o televisores, con valores ya asignados.
+Luego, recorrer este array y ejecutar el método precioFinal() en cada electrodoméstico. Se 
+deberá también mostrar el precio de cada tipo de objeto, es decir, el precio de todos los 
+televisores y el de las lavadoras. Una vez hecho eso, también deberemos mostrar, la suma del 
+precio de todos los Electrodomésticos. Por ejemplo, si tenemos una lavadora con un precio de 
+2000 y un televisor de 5000, el resultado final será de 7000 (2000+5000) para 
+electrodomésticos, 2000 para lavadora y 5000 para televisor.
+
  */
 package herenciaej2;
 
 import herenciaej2.entidades.Electrodomestico;
 import herenciaej2.entidades.Lavadora;
+import herenciaej2.entidades.Televisor;
 import herenciaej2.servicio.ElectrodomesticoServicio;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HerenciaEj2 {
@@ -93,10 +105,38 @@ public class HerenciaEj2 {
 //        
 //        System.out.println(e1.getPrecio());
         Lavadora lava = es.crearLavadora();
-        System.out.println("El precio actual de la lavadora es " + lava.getPrecio());
+//        System.out.println("El precio actual de la lavadora es " + lava.getPrecio());
+//
+//        System.out.println(lava.precioFinal(lava.getElectrodomestico()));
+//        System.out.println("El precio final de la lavadora es " + lava.getPrecio());
 
-        System.out.println(lava.precioFinal(lava.getElectrodomestico()));
-        System.out.println("El precio final de la lavadora es " + lava.getPrecio());
+        Televisor tele = es.crearTelevisor();
+
+//        System.out.println("El precio actual de la televisor es " + tele.getPrecio());
+//        System.out.println(tele.precioFinal(tele.getElectrodomestico()));
+//        System.out.println("El precio final de la televisor es " + tele.getPrecio());
+        Lavadora lava2 = es.crearLavadora();
+        Televisor tele2 = es.crearTelevisor();
+        
+        ArrayList<Electrodomestico> fravega = new ArrayList();
+        
+        fravega.add(tele);
+        fravega.add(tele2);
+        fravega.add(lava);
+        fravega.add(lava2);
+        
+        for (Electrodomestico electrodomestico : fravega) {
+            System.out.println("El precio final de este electrodomestico es: " + electrodomestico.precioFinal(electrodomestico));
+        }
+        
+        double precioFinal = 0;
+        
+        for (int i = 0; i < fravega.size(); i++) {
+            System.out.println(fravega.get(i).toString());
+            precioFinal = precioFinal + fravega.get(i).getPrecio();
+        }
+        
+        System.out.println("El precio final de todos los electrodomesticos es " + precioFinal);
 
     }
 

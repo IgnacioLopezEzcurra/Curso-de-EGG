@@ -21,11 +21,15 @@ precio final de su alquiler.
 
 package herenciaextra1;
 
+import herenciaextra1.servicios.Alquiler;
+
 
 public class HerenciaExtra1 {
 
 
     public static void main(String[] args) {
+        
+        Alquiler alqui = new Alquiler();
         
         
         

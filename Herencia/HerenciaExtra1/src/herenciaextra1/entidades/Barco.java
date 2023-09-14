@@ -16,11 +16,22 @@ public abstract class Barco {
     protected String matricula;
     protected double eslora;
     protected int anioFab;
-    
-    public void calcularModulo(){
-    
-        
-        
+
+    protected Barco() {
+    }
+
+    protected Barco(String matricula, double eslora, int anioFab) {
+        this.matricula = matricula;
+        this.eslora = eslora;
+        this.anioFab = anioFab;
     }
     
+    
+    
+    public abstract double calcularModulo();
+    
+        
+        
 }
+    
+

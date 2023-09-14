@@ -16,41 +16,54 @@ Barco que lo ocupará (instancia de la clase Barco)
 Método:
 calcularPrecio(): Calcula el precio del alquiler multiplicando el número de días de ocupación por el módulo del barco correspondiente.
  */
-
 package herenciaextra1.servicios;
 
 import herenciaextra1.entidades.Barco;
 import java.time.LocalDate;
-
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
 
 public class Alquiler {
-    
+
     private String nombre;
     private String dni;
     private LocalDate fechaAlquiler;
     private LocalDate fechaDevolucion;
     private int posAmarre;
     private Barco barcoOcupante;
-    
+
     // Constructor
-    public Alquiler(String nombreCliente, String dni, LocalDate fechaAlquiler, LocalDate fechaDevolucion, int posAmarre, Barco barcoOcupante) {
-        this.nombreCliente = nombreCliente;
+    public Alquiler(String nombre, String dni, LocalDate fechaAlquiler, LocalDate fechaDevolucion, int posAmarre, Barco barcoOcupante) {
+        this.nombre = nombre;
         this.dni = dni;
         this.fechaAlquiler = fechaAlquiler;
         this.fechaDevolucion = fechaDevolucion;
-        this.posAmarre = posicionAmarre;
+        this.posAmarre = posAmarre;
         this.barcoOcupante = barcoOcupante;
     }
 
-   
-
-    // Getters y setters
-    public String getNombreCliente() {
-        return nombreCliente;
+    public Alquiler() {
+       
+    }
+    
+    public Alquiler crearAlquiler(){
+        Alquiler alqui = new Alquiler();
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Ingrese el nombre del inquilino");
+        alqui.setNombre(leer.next());
+        alqui.setDni(leer.next());
+        
+        
+        return alqui;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    // Getters y setters
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDni() {
@@ -92,18 +105,28 @@ public class Alquiler {
     public void setBarcoOcupante(Barco barcoOcupante) {
         this.barcoOcupante = barcoOcupante;
     }
+
+//     // Método para calcular el precio del alquiler
+//    public double calcularPrecio() {
+//        // Calcular el número de días de ocupación
+//        long diferenciaEnTiempo = fechaDevolucion.getTime() - fechaAlquiler.getTime();
+//        int diasDeOcupacion = (int) (diferenciaEnTiempo / (1000 * 60 * 60 * 24));
+//
+//        // Calcular el precio multiplicando los días de ocupación por el módulo del barco
+//        double precio = diasDeOcupacion * barcoOcupante.calcularModulo();
+//
+//        return precio;
+//    }
     
-     // Método para calcular el precio del alquiler
+    // Método para calcular el precio del alquiler
     public double calcularPrecio() {
         // Calcular el número de días de ocupación
-        long diferenciaEnTiempo = fechaDevolucion.getTime() - fechaAlquiler.getTime();
-        int diasDeOcupacion = (int) (diferenciaEnTiempo / (1000 * 60 * 60 * 24));
+        long diferenciaEnDias = ChronoUnit.DAYS.between(fechaAlquiler, fechaDevolucion);
 
         // Calcular el precio multiplicando los días de ocupación por el módulo del barco
-        double precio = diasDeOcupacion * barcoOcupante.calcularModulo();
+        double precio = diferenciaEnDias * barcoOcupante.calcularModulo();
 
         return precio;
     }
 
-    
 }
