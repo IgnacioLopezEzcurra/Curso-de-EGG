@@ -46,13 +46,32 @@ public class Alquiler {
        
     }
     
-    public Alquiler crearAlquiler(){
+    public Alquiler crearAlquiler(Barco barco){
         Alquiler alqui = new Alquiler();
         Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        
         System.out.println("Ingrese el nombre del inquilino");
         alqui.setNombre(leer.next());
+        
+        System.out.println("Ingrese el dni:");
         alqui.setDni(leer.next());
         
+          // Pedir la fecha de alquiler al usuario
+        System.out.print("Ingrese la fecha de alquiler (AAAA-MM-DD): ");
+        String fechaAlquilerStr = leer.next();
+        
+        // Pedir la fecha de devolución al usuario
+        System.out.print("Ingrese la fecha de devolución (AAAA-MM-DD): ");
+        String fechaDevolucionStr = leer.next();
+        
+        // Convertir las cadenas ingresadas a objetos LocalDate
+         alqui.setFechaAlquiler(LocalDate.parse(fechaAlquilerStr)); 
+         alqui.setFechaDevolucion(LocalDate.parse(fechaDevolucionStr));
+         
+         System.out.println("Ingrese la posicion de amarre:");
+         alqui.setPosAmarre(leer.nextInt());
+         
+        alqui.setBarcoOcupante(barco);
         
         return alqui;
     }
@@ -128,5 +147,16 @@ public class Alquiler {
 
         return precio;
     }
+
+    @Override
+    public String toString() {
+        return "Alquiler{" + "nombre=" + nombre + "\n, dni=" + dni + 
+                "\n, fechaAlquiler=" + fechaAlquiler + 
+                "\n, fechaDevolucion=" + fechaDevolucion + 
+                "\n, posAmarre=" + posAmarre + 
+                "\n, barcoOcupante=" + barcoOcupante + '}';
+    }
+    
+    
 
 }

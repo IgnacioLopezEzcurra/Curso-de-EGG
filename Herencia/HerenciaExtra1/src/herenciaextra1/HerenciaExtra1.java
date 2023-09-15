@@ -18,21 +18,53 @@ Utilizando la herencia de forma apropiada, deberemos programar en Java, las clas
 métodos necesarios que permitan al usuario elegir el barco que quiera alquilar y mostrarle el 
 precio final de su alquiler.
  */
-
 package herenciaextra1;
 
+import herenciaextra1.entidades.Barco;
+import herenciaextra1.entidades.BarcoMotor;
+import herenciaextra1.entidades.Velero;
+import herenciaextra1.entidades.YateDeLujo;
 import herenciaextra1.servicios.Alquiler;
-
 
 public class HerenciaExtra1 {
 
-
     public static void main(String[] args) {
-        
+
         Alquiler alqui = new Alquiler();
-        
-        
-        
+
+        Barco barco = new BarcoMotor();
+
+        barco = barco.crearBarco();
+        System.out.println(barco.toString());
+
+        alqui = alqui.crearAlquiler(barco);
+
+        System.out.println(alqui.toString());
+
+        System.out.println("El precio del alquiler es de " + alqui.calcularPrecio());
+
+        System.out.println("\n------------------------");
+
+        Barco velero = new Velero();
+        velero = velero.crearBarco();
+        System.out.println(velero.toString());
+
+        Alquiler alquiVelero = new Alquiler();
+        alquiVelero = alquiVelero.crearAlquiler(velero);
+        System.out.println(alquiVelero.toString());
+        System.out.println("El precio del alquiler es de " + alquiVelero.calcularPrecio());
+
+        System.out.println("\n------------------------");
+
+        Barco yate = new YateDeLujo();
+        yate = yate.crearBarco();
+        System.out.println(yate.toString());
+
+        Alquiler alquiYate = new Alquiler();
+        alquiYate = alquiYate.crearAlquiler(yate);
+        System.out.println(alquiYate.toString());
+        System.out.println("El precio del alquiler es de " + alquiYate.calcularPrecio());
+
     }
-    
+
 }
