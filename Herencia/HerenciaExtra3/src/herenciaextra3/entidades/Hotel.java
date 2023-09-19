@@ -53,7 +53,7 @@ public abstract class Hotel extends Alojamiento{
 
     @Override
     public String toString() {
-        return "Hotel{" + "cantHab=" + cantHab + ", numCamas=" + numCamas + ", cantPisos=" + cantPisos + ", precioHab=" + precioHab + '}';
+        return super.toString() + "\nHotel{" + "cantHab=" + cantHab + ", numCamas=" + numCamas + ", cantPisos=" + cantPisos + ", precioHab=" + precioHab + '}';
     }
     
     public abstract void calcularPrecioHab();

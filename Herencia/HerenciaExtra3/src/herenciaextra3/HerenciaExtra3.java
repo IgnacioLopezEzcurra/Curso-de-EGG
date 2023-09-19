@@ -47,21 +47,56 @@ Realizar un sistema de consulta que le permite al usuario consultar por diferent
 • todos los campings con restaurante
 • todos las residencias que tienen descuento. 
  */
-
 package herenciaextra3;
 
+import herenciaextra3.entidades.Alojamiento;
+import herenciaextra3.entidades.Camping;
+import herenciaextra3.entidades.Hotel4Estrellas;
 import herenciaextra3.entidades.Hotel5Estrellas;
-
+import herenciaextra3.entidades.Residencia;
+import herenciaextra3.servicios.Servicio;
+import java.util.ArrayList;
 
 public class HerenciaExtra3 {
 
-
     public static void main(String[] args) {
+
+//        Hotel5Estrellas hotel5 = new Hotel5Estrellas(1, 2, 4, true, "Lo de Toto", 40, 20, 10, 50, "Juan", "Jamaica", "Caribe", "Saul Mendoza");
+//
+//        System.out.println(hotel5.toString());
+//
+        Alojamiento camping = new Camping();
+
+        camping = camping.crearAlojamiento();
+
+        System.out.println(camping.toString());
+        Alojamiento resi = new Residencia();
         
-        Hotel5Estrellas hotel5 = new Hotel5Estrellas(1, 2, 4, true, "Lo de Toto", 40, 20, 10, 50, "Juan", "Jamaica", "Caribe", "Saul Mendoza");
-        
+        resi = resi.crearAlojamiento();
+//
+//        System.out.println(resi.toString());
+        Alojamiento hotel4 = new Hotel4Estrellas();
+        Alojamiento hotel5 = new Hotel5Estrellas();
+        hotel4 = hotel4.crearAlojamiento();
+        hotel5 = hotel5.crearAlojamiento();
+
+        System.out.println("\n---LOS VALORES DE HOTEL 4 SON ---");
+        System.out.println(hotel4.toString());
+        System.out.println("\n---LOS VALORES DE HOTEL 5 SON ---");
         System.out.println(hotel5.toString());
         
+        ArrayList<Alojamiento> alojamientos = new ArrayList();
+        
+        alojamientos.add(hotel5);
+        alojamientos.add(hotel4);
+        alojamientos.add(resi);
+        alojamientos.add(camping);
+        
+        Servicio ser = new Servicio();
+        ser.setLista(alojamientos);
+        
+        ser.menu();
+
     }
-    
+
 }

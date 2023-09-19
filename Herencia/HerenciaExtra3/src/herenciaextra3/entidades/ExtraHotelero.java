@@ -34,7 +34,7 @@ public abstract class ExtraHotelero extends Alojamiento{
 
     @Override
     public String toString() {
-        return "ExtraHotelero{" + "privado=" + privado + ", superficie=" + superficie + '}';
+        return super.toString() + "\nExtraHotelero{" + "privado=" + privado + ", superficie=" + superficie + '}';
     }
     
     

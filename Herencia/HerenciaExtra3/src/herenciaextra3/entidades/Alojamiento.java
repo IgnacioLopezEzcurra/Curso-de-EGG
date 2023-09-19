@@ -56,6 +56,6 @@ public abstract class Alojamiento {
         return "Alojamiento{" + "nombre=" + nombre + ", direccion=" + direccion + ", localidad=" + localidad + ", gerente=" + gerente + '}';
     }
     
-    
+    public abstract Alojamiento crearAlojamiento();
     
 }
