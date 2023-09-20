@@ -56,6 +56,7 @@ import herenciaextra3.entidades.Hotel5Estrellas;
 import herenciaextra3.entidades.Residencia;
 import herenciaextra3.servicios.Servicio;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HerenciaExtra3 {
 
@@ -77,8 +78,10 @@ public class HerenciaExtra3 {
 //        System.out.println(resi.toString());
         Alojamiento hotel4 = new Hotel4Estrellas();
         Alojamiento hotel5 = new Hotel5Estrellas();
+        Alojamiento hotel = new Hotel5Estrellas();
         hotel4 = hotel4.crearAlojamiento();
         hotel5 = hotel5.crearAlojamiento();
+        hotel = hotel.crearAlojamiento();
 
         System.out.println("\n---LOS VALORES DE HOTEL 4 SON ---");
         System.out.println(hotel4.toString());
@@ -91,11 +94,24 @@ public class HerenciaExtra3 {
         alojamientos.add(hotel4);
         alojamientos.add(resi);
         alojamientos.add(camping);
+        alojamientos.add(hotel);
         
         Servicio ser = new Servicio();
         ser.setLista(alojamientos);
         
-        ser.menu();
+//        ser.menu();
+
+
+
+         alojamientos.sort(Servicio.compararHotelesAscendente);
+         
+         for (Alojamiento alojamiento : alojamientos) {
+                System.out.println("---Aqui tenemos guardado a: ----");
+            System.out.println(alojamiento.toString());
+            System.out.println("-------------------");
+        }
+         
+         
 
     }
 

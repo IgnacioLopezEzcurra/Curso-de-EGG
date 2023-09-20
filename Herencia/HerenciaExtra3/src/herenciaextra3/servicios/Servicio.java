@@ -13,6 +13,7 @@ import herenciaextra3.entidades.Alojamiento;
 import herenciaextra3.entidades.Hotel;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Servicio {
@@ -73,11 +74,36 @@ public class Servicio {
 
     }
 
-    private void verHotelesCaroBarato(ArrayList<Alojamiento> lista) {
-        Collections.sort(Alojamiento, (hotel1, hotel2) -> Double.compare(hotel2.getPrecio(), hotel1.getPrecio()));
+//    private void verHotelesCaroBarato(ArrayList<Alojamiento> lista) {
+//        Collections.sort(Alojamiento, (hotel1, hotel2) -> Double.compare(hotel2.getPrecio(), hotel1.getPrecio()));
+//
+//    }
+//
+//    public static Comparator<Hotel> verHotelesCaroBarato = new Comparator<Hotel>() { // Creamos un objeto comparator 
+//
+//        // Usamos el override para traer un metodo de otra clase y poder usarlo
+//        @Override
+//        public int compare(Hotel t, Hotel t1) {// Le pasamos dos objetos a comparar
+//            return Double.compare(t.getPrecioHab(), t1.getPrecioHab()); // Los comparamos usando el get y el compareTo
+//        }
+//    };
+    
+    public static Comparator<Alojamiento> compararHotelesAscendente = new Comparator<Alojamiento>() {
+    @Override
+    public int compare(Alojamiento alojamiento1, Alojamiento alojamiento2) {
+        if (alojamiento1 instanceof Hotel && alojamiento2 instanceof Hotel) {
+            // Ambos alojamientos son instancias de Hotel (pueden ser Hotel4Estrellas o Hotel5Estrellas)
+            Hotel hotel1 = (Hotel) alojamiento1;
+            Hotel hotel2 = (Hotel) alojamiento2;
 
+            // Realizar la comparación de hoteles basada en el criterio deseado (por ejemplo, el precio)
+            return Double.compare(hotel1.getPrecioHab(), hotel2.getPrecioHab());
+        } else {
+            // Si alguno de los alojamientos no es un Hotel, puedes manejarlo aquí según tu lógica
+            // Por ejemplo, si deseas que los no-hoteles vengan antes o después, puedes hacerlo aquí
+            return 0; // O alguna otra lógica de comparación adecuada
+        }
     }
-    
-    
+};
 
 }
