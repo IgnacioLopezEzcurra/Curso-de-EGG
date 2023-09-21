@@ -47,7 +47,7 @@ public class Excepciones5 {
                 System.out.println("Error: Ingresa un número válido.");
                 scanner.nextLine(); // Limpiar el búfer del teclado
                 intentos++;
-            }
+            } 
         }
 
         scanner.close();

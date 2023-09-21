@@ -33,6 +33,7 @@ public class Cajonera {
     public void asignarValor(int indice, int valor) {
         try {
             cajonera[indice] = valor;
+            System.out.println("Aca el valor se ingreso correctamente");
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Se ha producido una excepción: " + e.getMessage());
             System.out.println("El índice está fuera de rango.");

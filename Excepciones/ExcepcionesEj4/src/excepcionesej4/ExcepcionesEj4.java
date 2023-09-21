@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 public class ExcepcionesEj4 {
 
-   
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -21,23 +20,29 @@ public class ExcepcionesEj4 {
             System.out.print("Ingrese el primer número: ");
             String numero1Str = scanner.nextLine();
 
-            System.out.print("Ingrese el segundo número: ");
-            String numero2Str = scanner.nextLine();
+//            System.out.print("Ingrese el segundo número: ");
+//            String numero2Str = scanner.nextLine();
 
             // Convertir las cadenas a enteros usando parseInt()
             int numero1 = Integer.parseInt(numero1Str);
-            int numero2 = Integer.parseInt(numero2Str);
-           
-                // Realizar la división
-                double resultado = (double) numero1 / numero2;
-                System.out.println("Resultado de la división: " + resultado);
-            
+            System.out.print("Ingrese el segundo número: ");
+            int numero2 = scanner.nextInt();
+
+            // Realizar la división
+            int resultado = numero1 / numero2;
+            System.out.println("Resultado de la división: " + resultado);
+
         } catch (InputMismatchException e) {
             System.out.println("Error: Ingrese números válidos.");
+            System.out.println("Tipo de Error: " + e);
         } catch (NumberFormatException e) {
             System.out.println("Error: La cadena no se puede convertir a entero.");
+            System.out.println("Tipo de Error: " + e);
+
         } catch (ArithmeticException e) {
             System.out.println("Error: División por cero.");
+            System.out.println("Tipo de Error: " + e);
+
         } finally {
             scanner.close();
         }
