@@ -2,8 +2,8 @@
     <parameter name = "url" value="https://www.wikipedia.org/wiki/Wikipedia:Portada" />
     <parameter name = "browser" value="chrome" />
 
-    <parameter name = "textToSearch"
-               value = "Globant" />
+    <parameter name="textToSearch"
+               value="Globant" />
 
     <test name="Search Test">
           <classes>

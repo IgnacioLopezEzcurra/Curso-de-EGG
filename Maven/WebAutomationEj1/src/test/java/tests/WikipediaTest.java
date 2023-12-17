@@ -11,8 +11,8 @@ import static org.testng.Assert.assertTrue;
 public class WikipediaTest extends BaseTest {
 
     @Test
-    @Parameters({"textToSearch"})
-    public void searchText(String textToSearch){
+    @Parameters({ "textToSearch" })
+    public void searchTest(String textToSearch){
         HomePage home = loadFirstPage();
         ResultPage results = home.searchText(textToSearch);
 
