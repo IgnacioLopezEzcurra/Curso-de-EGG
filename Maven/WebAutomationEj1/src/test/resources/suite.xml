@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
--->
+<suite name="Web Automation Suite">
+    <parameter name = "url" value="https://www.wikipedia.org/wiki/Wikipedia:Portada" />
+    <parameter name = "browser" value="chrome" />
 
+    <parameter name = "textToSearch"
+               value = "Globant" />
 
-
-<root>
-    
-</root>
+    <test name="Search Test">
+          <classes>
+              <class name="tests.WikipediaTest"/>
+          </classes>
+    </test>
+</suite>
 

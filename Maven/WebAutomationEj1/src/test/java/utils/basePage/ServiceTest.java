@@ -4,22 +4,22 @@
  */
 package utils.basePage;
 
-import io.restassured.response.Response;
-import okhttp3.Response;
-import org.testng.annotations.Test;
-import io.restassured.Restassured.given;
+//import io.restassured.response.Response;
+//import okhttp3.Response;
+//import org.testng.annotations.Test;
+//import io.restassured.Restassured.given;
 
 
 public class ServiceTest {
     
-    @Test
+   /* @Test
     public void getExample(){
     
         Response response;
         
-        response = given().
+        //response = given().
         
-    }
+    }*/
     
     
 }
